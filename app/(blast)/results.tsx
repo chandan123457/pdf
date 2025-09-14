@@ -24,7 +24,6 @@ export default function BlastResultsTab() {
                 { label: 'Refrigeration Capacity (with 20% Safety)', value: results.refrigerationCapacity.toFixed(1), unit: 'TR' },
                 { label: 'Base Load (without safety)', value: results.totalLoadTR.toFixed(1), unit: 'TR' },
                 { label: 'Total Load in BTU/hr', value: (results.totalLoadKw * 3412).toFixed(1), unit: 'BTU/hr' },
-                { label: 'Safety Factor Applied', value: results.capacityIncludingSafety.toFixed(1), unit: '%' },
             ],
             inputs: [
                 {
@@ -51,8 +50,8 @@ export default function BlastResultsTab() {
                     title: 'Product Definition',
                     items: [
                         { label: 'Product', value: 'Product', unit: '' },
-                        { label: 'Product Quantity', value: miscData.capacityRequired?.toString() || '0', unit: 'kg' },
-                        { label: 'Daily Product Loading', value: miscData.capacityRequired?.toString() || '0', unit: 'kg' },
+                        { label: 'Product Quantity', value: miscData.capacityRequired.toString(), unit: 'kg' },
+                        { label: 'Daily Product Loading', value: miscData.capacityRequired.toString(), unit: 'kg' },
                         { label: 'Product Incoming Temp', value: productData.productEnteringTemp.toString(), unit: `°${productData.tempUnit}` },
                         { label: 'Product Final Temp', value: productData.productFinalTemp.toString(), unit: `°${productData.tempUnit}` },
                         { label: 'Specific Heat Above Freezing', value: productData.cpAboveFreezing.toString(), unit: 'kJ/kg °C' },
@@ -65,14 +64,12 @@ export default function BlastResultsTab() {
                 {
                     title: 'Internal Factors',
                     items: [
-                        { label: 'No. of Workers', value: miscData.occupancyCount?.toString() || '0', unit: '' },
-                        { label: 'Rated Power of motors', value: miscData.fanMotorRating?.toString() || '0', unit: 'W' },
-                        { label: 'Lightings', value: miscData.lightPower?.toString() || '0', unit: 'W' },
+                        { label: 'No. of Workers', value: miscData.occupancyCount.toString(), unit: '' },
+                        { label: 'Rated Power of motors', value: miscData.fanMotorRating.toString(), unit: 'W' },
+                        { label: 'Lightings', value: miscData.lightPower.toString(), unit: 'W' },
                         { label: 'Heater Coils', value: '0', unit: 'W' },
                         { label: 'Working Time', value: '5', unit: 'h' },
-                        { label: 'Operating Time 1', value: miscData.equipmentUsageHours?.toString() || '20', unit: 'h' },
-                        { label: 'Operating Time 2', value: '6', unit: 'h' },
-                        { label: 'Operating Time 3', value: '0', unit: 'h' },
+                        { label: 'Operating Time', value: miscData.equipmentUsageHours.toString(), unit: 'h' },
                     ]
                 }
             ],
